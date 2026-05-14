@@ -60,7 +60,7 @@ end
 
 gem "devise", "~> 4.9"
 
-gem "avo", "~> 3.13"
+gem "avo", "~> 3.31"
 
 gem "ostruct", "~> 0.6.0"
 
