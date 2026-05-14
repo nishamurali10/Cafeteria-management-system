@@ -1,0 +1,52 @@
+<main>
+  <div class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="grid items-start max-w-2xl grid-cols-1 grid-rows-1 mx-auto gap-x-8 gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+      <!-- Invoice -->
+      <div class="px-4 py-8 -mx-4 shadow-sm ring-1 ring-gray-900/5 sm:mx-0 sm:rounded-lg sm:px-8 sm:pb-14 lg:col-span-2 lg:row-span-2 lg:row-end-2 xl:px-16 xl:pb-20 xl:pt-16">
+        <h2 class="text-base font-semibold leading-6 text-gray-900">Order #<%= @order.id %></h2>
+        <dl class="grid grid-cols-1 mt-6 text-sm leading-6">
+          <div class="sm:pr-4">
+            <dt class="inline text-gray-500">Customer:</dt>
+            <dd class="inline text-gray-700"><span><%= @order.customer.name %></span></dd>
+          </div>
+          <div class="sm:pr-4">
+            <dt class="inline text-gray-500">Issued on:</dt>
+            <dd class="inline text-gray-700"><time datetime="<%= @order.created_at %>"><%= @order.created_at.strftime('%e %b %Y') %></time></dd>
+          </div>
+          <div class="pt-6 mt-6 border-t border-gray-900/5 sm:pr-4">
+            <dt class="font-semibold text-gray-900">Thanks for Ordering at</dt>
+            <dd class="mt-2 text-gray-500"><span class="font-medium text-gray-900">Cafe, Inc.</span><br>
+              7363 Cynthia Pass<br>
+              Toronto, ON N3Y 4H8</dd>
+          </div>
+        </dl>
+        <table class="w-full mt-16 text-sm leading-6 text-left whitespace-nowrap">
+          <colgroup>
+            <col class="w-full">
+            <col>
+            <col>
+            <col>
+          </colgroup>
+          <thead class="text-gray-900 border-b border-gray-200">
+            <tr>
+              <th scope="col" class="px-0 py-3 font-semibold">Items</th>
+              <th scope="col" class="hidden py-3 pl-8 pr-0 font-semibold text-right sm:table-cell">Quantity</th>
+              <th scope="col" class="hidden py-3 pl-8 pr-0 font-semibold text-right sm:table-cell">Price</th>
+              <th scope="col" class="py-3 pl-8 pr-0 font-semibold text-right">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "order_items/show_items", collection: @order.order_items, as: :item %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row" class="pt-4 font-semibold text-gray-900 sm:hidden">Total</th>
+              <th scope="row" colspan="3" class="hidden pt-4 font-semibold text-right text-gray-900 sm:table-cell">Total</th>
+              <td class="pt-4 pb-0 pl-8 pr-0 font-semibold text-right text-gray-900 tabular-nums"><%= number_to_currency(@order.total, unit: "₹") %></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

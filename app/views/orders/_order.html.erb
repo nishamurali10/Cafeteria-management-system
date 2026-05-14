@@ -1,0 +1,12 @@
+<tr>
+  <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-0"><%= link_to "Order ##{order.id}", order_path(order) %></td>
+  <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-0"><%= order.customer.name %></td>
+  <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap"><%= order.payment_terms.capitalize %></td>
+  <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap"><%= number_to_currency(order.total, unit: "₹") %></td>
+  <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap"><%= order.created_at.to_time.strftime('%e %b %Y, %l:%M %p') %></td>
+  <td class="relative py-4 pl-3 pr-4 text-sm font-medium text-right whitespace-nowrap sm:pr-0">
+    <%= link_to edit_order_path(order), class: "text-indigo-600 hover:text-indigo-900" do %>
+      Edit<span class="sr-only">, <%= order.customer.name %></span></a>
+  <% end %>
+</td>
+</tr>
