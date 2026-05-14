@@ -64,4 +64,4 @@ gem "avo", "~> 3.13"
 
 gem "ostruct", "~> 0.6.0"
 
-gem "ferrum_pdf", "~> 0.3.0"
+gem "ferrum_pdf", "~> 3.1.0"
